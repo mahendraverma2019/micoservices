@@ -7,89 +7,167 @@ Principles Used To Design Microservice Architecture
 5) Minimizing data tables to optimize load.
 6) Performing constant monitoring over external and internal APIs.
 7) Isolated data storage for each microservice – This is very important to maintain limited access to data and avoid ‘service coupling’. Classification of data based on the users is important and can be achieved through the Command and Query Responsibility Segregation (CQRS).
-8) Decentralization – The first and foremost principle to design microservice architecture is the ability to break down the monolithic architecture into separate individual entities. These entities are known as microservices. These microservices work independent of the other system functions and all users to edit, delete or employ any functionality without affecting the system performance.
-9) Scalability – Microservices are built with an aim in mind: Performance and efficiency. In real-world problem solving, expansion and large-scale systems are crucial to the performance of any microservice ecosystem. Scalability is crucial to design microservice architecture. With the possibility of multiple fragments functioning on multiple technologies, working with larger amounts of data can be a challenge. But, proper implementation and use of Application Controllers can make scalability with microservice architecture possible.
-10)Continuous delivery through DevOps Integration – Those working in DevOps often receive microservice architecture well because of the ease of accessibility and integration of multiple technologies. To design microservice architecture one needs to focus on increasing performance and efficiency of the system. This motivates DevOps to deliver solutions faster. It also offers certain advantages over a traditional monolithic design such as ease of deployability, reliable solutions, scalability, and management. Hence, it forms a major part of the basic principles of design.
+8) Decentralization – The first and foremost principle to design microservice architecture is the ability to break down the monolithic 
+architecture into separate individual entities. These entities are known as microservices. These microservices work independent of the 
+other system functions and all users to edit, delete or employ any functionality without affecting the system performance.
+9) Scalability – Microservices are built with an aim in mind: Performance and efficiency. In real-world problem solving, expansion and 
+large-scale systems are crucial to the performance of any microservice ecosystem. Scalability is crucial to design microservice 
+architecture. With the possibility of multiple fragments functioning on multiple technologies, working with larger amounts of data 
+can be a challenge. But, proper implementation and use of Application Controllers can make scalability with microservice architecture 
+possible.
+10)Continuous delivery through DevOps Integration – Those working in DevOps often receive microservice architecture well because of 
+the ease of accessibility and integration of multiple technologies. To design microservice architecture one needs to focus on 
+increasing performance and efficiency of the system. This motivates DevOps to deliver solutions faster. It also offers certain 
+advantages over a traditional monolithic design such as ease of deployability, reliable solutions, scalability, and management. 
+Hence, it forms a major part of the basic principles of design.
 
 
 Microservice Design Patterns for Effective Collaboration
 a) Aggregator Microservice Design Pattern
-   With multiple services involved, fetching the output and combining it for the end-user is necessary. For a user to combine the data, will require immense internal knowledge of the system. As we design microservice architecture, breaking down the monolith means the division of the sources of output. Hence, to aggregate this data we make use of the aggregator pattern. 
-   The solution can be forwarded to the end-user through two major components. The first one is a composite microservice followed by API gateways. Either of them will aggregate the data and forward it to the user. But, in case business capabilities are used in decomposing the system, composite microservice should be preferred.
+   With multiple services involved, fetching the output and combining it for the end-user is necessary. For a user to combine the data, 
+   will require immense internal knowledge of the system. As we design microservice architecture, breaking down the monolith means the 
+   division of the sources of output. Hence, to aggregate this data we make use of the aggregator pattern. 
+   The solution can be forwarded to the end-user through two major components. The first one is a composite microservice followed by 
+   API gateways. Either of them will aggregate the data and forward it to the user. But, in case business capabilities are used in 
+   decomposing the system, composite microservice should be preferred.
 b) Branch Microservice Design Pattern
-   They basically extend Aggregator design patterns. In branch microservice you can simultaneously process the request and response from 2 independent or to be precise 2 mutually exclusive chains of microservices.
-   This design pattern also offers flexibility to summon separate multiple chains or even a single chain in accordance to your business needs. In case of an eCommerce website or web application we may need to retrieve data from multiple sources belonging to different microservices. This is where Branch Microservice Design Pattern plays an effective role.
+   They basically extend Aggregator design patterns. In branch microservice you can simultaneously process the request and response 
+   from 2 independent or to be precise 2 mutually exclusive chains of microservices.
+   This design pattern also offers flexibility to summon separate multiple chains or even a single chain in accordance to your business 
+   needs. In case of an eCommerce website or web application we may need to retrieve data from multiple sources belonging to different 
+   microservices. This is where Branch Microservice Design Pattern plays an effective role.
 c) Backend for Front-End/ API Gateway
-   Fetching data from every running service is imperative for any application. With the microservice architecture, it is very important to extract the data from individual services. But, fetching user-owned resources from the variety of microservices presented from a single UI can be very tricky. After all, the User Interface captures a lot of information of the end user. API gateway serves as a helpline by generating a single entry point for all interactions that takes place within the architecture. API gateway also helps to establish security by client authorization and exposing relevant APIs with respect to the client. What do we do now?
-   An API gateway, being a single source of contact can not only act as a proxy server to route requests to microservices but also aggregate results from multiple services and send the output to the user. It can handle multiple protocol requests and convert whenever required. (eg. HTTPS to AMQP and vice versa)
+   Fetching data from every running service is imperative for any application. With the microservice architecture, it is very important 
+   to extract the data from individual services. But, fetching user-owned resources from the variety of microservices presented from a 
+   single UI can be very tricky. After all, the User Interface captures a lot of information of the end user. API gateway serves as a 
+   helpline by generating a single entry point for all interactions that takes place within the architecture. API gateway also helps to 
+   establish security by client authorization and exposing relevant APIs with respect to the client. What do we do now?
+   An API gateway, being a single source of contact can not only act as a proxy server to route requests to microservices but also 
+   aggregate results from multiple services and send the output to the user. It can handle multiple protocol requests and convert 
+   whenever required. (eg. HTTPS to AMQP and vice versa)
    
 Microservice Design Patterns for Performance Monitoring
 a) Log Aggregation
-   When we refer to a microservice architecture we are referring to a refined yet granular architecture where an application is consisting a number of microservices. These microservices run independently and simultaneously as supporting multiple services as well as their instances across various machines. Every service generates an entry in the logs regarding its execution. How can you keep a track for numerous service related logs? This is where log aggregation steps in. As a best practice to prevent from chaos, you should be having a master logging service. This master logging service should be responsible for aggregating the logs from all the microservice instances. This centralized log should be searchable, making it easier to monitor.
+   When we refer to a microservice architecture we are referring to a refined yet granular architecture where an application is 
+   consisting a number of microservices. These microservices run independently and simultaneously as supporting multiple services as 
+   well as their instances across various machines. Every service generates an entry in the logs regarding its execution. How can you 
+   keep a track for numerous service related logs? This is where log aggregation steps in. As a best practice to prevent from chaos, 
+   you should be having a master logging service. This master logging service should be responsible for aggregating the logs from all 
+   the microservice instances. This centralized log should be searchable, making it easier to monitor.
 b) Synthetic Monitoring a.k.a Semantic Monitoring
-   As I explained previously, monitoring is a painful but indispensable task for a successful microservice architecture. With simultaneous execution of hundreds of services it becomes troublesome to pinpoint the root area responsible for the failure in log registry. Synthetic monitoring gives a helping hand. When you perform automated test then synthetic monitoring helps to regularly map the results in comparison to the production environment. User gets alerted if a failure is generated. Using Semantic Monitoring you can aim for 2 things using a single arrow
+   As I explained previously, monitoring is a painful but indispensable task for a successful microservice architecture. With 
+   simultaneous execution of hundreds of services it becomes troublesome to pinpoint the root area responsible for the failure in log 
+   registry. Synthetic monitoring gives a helping hand. When you perform automated test then synthetic monitoring helps to regularly 
+   map the results in comparison to the production environment. User gets alerted if a failure is generated. Using Semantic Monitoring 
+   you can aim for 2 things using a single arrow
    1) Monitoring automated test cases.
    2) Detecting Production failures in terms of business requirements.
 c) API Health Check
-   Microservice architecture design promotes services which are independent of each other to avoid any delay in the system. APIs as we know serve as the building blocks of an online connectivity. It is imperative to keep a health check on your APIs on regular basis to realize any roadblock. It is often observed that a microservice is up and running yet incapacitated for handling requests. This can be due to many factors:
+   Microservice architecture design promotes services which are independent of each other to avoid any delay in the system. APIs as we 
+   know serve as the building blocks of an online connectivity. It is imperative to keep a health check on your APIs on regular basis 
+   to realize any roadblock. It is often observed that a microservice is up and running yet incapacitated for handling requests. This 
+   can be due to many factors:
     1) Server Loads
     2) User Adoption
     3) Latency
     4) Error Logging
     5) Market Share
     6) Downloads
-In order to overcome this scenario we should ensure that every service running must have a specific health check API endpoint. For example: HTTP/health when appended at the end of every service will return the health status for respective service instance. A service registry periodically appeals to the health check API endpoint to perform a health scan. The health check would provide you with the information on the below-mentioned:
+In order to overcome this scenario we should ensure that every service running must have a specific health check API endpoint. For 
+example: HTTP/health when appended at the end of every service will return the health status for respective service instance. A service 
+registry periodically appeals to the health check API endpoint to perform a health scan. The health check would provide you with the 
+information on the below-mentioned:
     1) A logic that is specific to your application.
     2) Status of the host.
     3) Status of the connections to other infrastructure or connection to any service instance.
 
 Breaking it all down to Business Capability
-The process of ‘decomposing’ a monolithic architecture into a microservice needs to follow certain parameters. These parameters have a different basis. Today we will look at the decomposition of the microservice design patterns which leave a lasting impact.
+The process of ‘decomposing’ a monolithic architecture into a microservice needs to follow certain parameters. These parameters have a 
+different basis. Today we will look at the decomposition of the microservice design patterns which leave a lasting impact.
 
 a) Unique Microservice for each Business Capability
-  A microservice is as successful as its combination of high cohesion and loose coupling. Services need to be loosely coupled while keeping the function of similar interests together. But how do we do it? How do we decompose a software system into smaller independent logical units?
+  A microservice is as successful as its combination of high cohesion and loose coupling. Services need to be loosely coupled while 
+  keeping the function of similar interests together. But how do we do it? How do we decompose a software system into smaller 
+  independent logical units?
   We do so by defining the scope of a microservice to support a specific business capability.
 
   For Example – 
-  In every organization, there are different departments that come together as one. These include technical, marketing, PR, sales, service, and maintenance. To picture a microservice structure these different domains would each be the microservices and the organization will be the system. 
-  So an Inventory management is responsible for all the inventories. Similarly, Shipping management will handle all the shipments and so on.
+  In every organization, there are different departments that come together as one. These include technical, marketing, PR, sales, 
+  service, and maintenance. To picture a microservice structure these different domains would each be the microservices and the 
+  organization will be the system. 
+  So an Inventory management is responsible for all the inventories. Similarly, Shipping management will handle all the shipments and 
+  so on.
 
-  To maintain efficiency and foresee growth, the best solution is to decompose the systems using business capability. This includes classification into various business domains which are responsible to generate value in their own capabilities.
+  To maintain efficiency and foresee growth, the best solution is to decompose the systems using business capability. This includes 
+  classification into various business domains which are responsible to generate value in their own capabilities.
   
   b) Microservices around similar Business Capability
-     Despite segregating on the basis of business capabilities, microservices often come up with a greater challenge. What about the common classes among the services? Well, decomposing these classes known as ‘God Classes’ needs intervention. For example, in case of an e-commerce system, the order will be common to several services such as order number, order management, order return, order delivery etc. To solve this issue, we turn to a common microservice design principle known as Domain-Driven Design (DDD).
-     In Domain-Driven Design, we use subdomains. These subdomain models have defined scope of functionality which is known as bounded context. This bounded context is the parameter used to create each microservice thus overcoming the issues of common classes.
+     Despite segregating on the basis of business capabilities, microservices often come up with a greater challenge. What about the 
+     common classes among the services? Well, decomposing these classes known as ‘God Classes’ needs intervention. For example, in case 
+     of an e-commerce system, the order will be common to several services such as order number, order management, order return, order 
+     delivery etc. To solve this issue, we turn to a common microservice design principle known as Domain-Driven Design (DDD).
+     In Domain-Driven Design, we use subdomains. These subdomain models have defined scope of functionality which is known as bounded 
+     context. This bounded context is the parameter used to create each microservice thus overcoming the issues of common classes.
   c) Strangler Vine Pattern
-    While we discuss decomposition of a monolithic architecture, we often miss out the struggle of converting a monolithic system to design microservice architecture. Without hampering the working, converting can be extremely tough. And to solve this problem we have the strangler pattern, based on the vine analogy. Here is what the Strangler patterns mean in Martin Fowler’s words:
-        “One of the natural wonders of this area [Australia] is the huge strangler vines. They seed in the upper branches of a fig tree and gradually work their way down the tree until they root in the soil. Over many years they grow into fantastic and beautiful shapes, meanwhile strangling and killing the tree that was their host.”
+    While we discuss decomposition of a monolithic architecture, we often miss out the struggle of converting a monolithic system to 
+    design microservice architecture. Without hampering the working, converting can be extremely tough. And to solve this problem we 
+    have the strangler pattern, based on the vine analogy. Here is what the Strangler patterns mean in Martin Fowler’s words:
+        “One of the natural wonders of this area [Australia] is the huge strangler vines. They seed in the upper branches of a fig tree 
+        and gradually work their way down the tree until they root in the soil. Over many years they grow into fantastic and beautiful 
+        shapes, meanwhile strangling and killing the tree that was their host.”
     Strangler pattern is extremely helpful in case of a web application where breaking down a service into different domains is possible. Since the calls go back and forth, different services live on different domains. So, these two domains exist on the same URI. Once the service has been reformed, it ‘strangles’ the existing version of the application. This process is followed until the monolith doesn’t exist.
 
 Microservice Design Patterns for Optimizing Database Storage
-For a microservice architecture, loose coupling is a basic principle. This enables deployment and scalability of independent services. Multiple services might need to access data not stored in their unit. But due to loose coupling, accessing this data can be a challenge. Mainly because different services have different storage requirements and access to data is limited in microservice design. So, we look at some major database design patterns as per different requirements.
+For a microservice architecture, loose coupling is a basic principle. This enables deployment and scalability of independent services. 
+Multiple services might need to access data not stored in their unit. But due to loose coupling, accessing this data can be a challenge. Mainly because different services have different storage requirements and access to data is limited in microservice design. So, we look at some major database design patterns as per different requirements.
 a) Individual Database per Service
-  Usually applied in Domain Driven Designs, one database per service articulates the entire database to a specific microservice. Due to the challenges and lack of accessibility, a single database per service needs to be designed. This data is accessible only by the microservice. This database has limited access for any outside microservices. The only way for others to access this data is through microservice API gateways.
+  Usually applied in Domain Driven Designs, one database per service articulates the entire database to a specific microservice. 
+  Due to the challenges and lack of accessibility, a single database per service needs to be designed. This data is accessible only 
+  by the microservice. This database has limited access for any outside microservices. The only way for others to access this data is
+  through microservice API gateways.
 
 b) Shared Database per Service
-  In Domain Driven Design, a separate database per service is feasible, but in an approach where you decompose a monolithic architecture to microservice, using a single database can be tough. So while the process of decomposition goes on, implementing a shared database for a limited number of service is advisable. This number should be limited to 2 or 3 services. This number should stay low to allow deployment, autonomy, and scalability.
+  In Domain Driven Design, a separate database per service is feasible, but in an approach where you decompose a monolithic 
+  architecture to microservice, using a single database can be tough. So while the process of decomposition goes on, implementing 
+  a shared database for a limited number of service is advisable. This number should be limited to 2 or 3 services. This number should 
+  stay low to allow deployment, autonomy, and scalability.
 
 c) Event Sourcing Design Pattern
   According to Martin Fowler
-    “Event Sourcing ensures that all changes to application state are stored as a sequence of events. Not just can we query these events, we can also use the event log to reconstruct past states, and as a foundation to automatically adjust the state to cope with retroactive changes.
-  The problem here lies with reliability. How can you rely on the architecture to make a change or publish a real-time event with respect to the changes in state of the application?
-  Event sourcing helps to come up from this situation by appending a new event to the list of the events every time a business entity changes its state. Entities like Customer may consist of numerous events. It is thus advised that an application saves a screenshot of the current state of an entity in order to optimize the load.
+    “Event Sourcing ensures that all changes to application state are stored as a sequence of events. Not just can we query these 
+    events, we can also use the event log to reconstruct past states, and as a foundation to automatically adjust the state to cope 
+    with retroactive changes.
+  The problem here lies with reliability. How can you rely on the architecture to make a change or publish a real-time event with 
+  respect to the changes in state of the application?
+  Event sourcing helps to come up from this situation by appending a new event to the list of the events every time a business entity 
+  changes its state. Entities like Customer may consist of numerous events. It is thus advised that an application saves a screenshot 
+  of the current state of an entity in order to optimize the load.
 
 d) Command Query Responsibility Segregation (CQRS)
-  In a database-per-service model, the query cannot be implemented because of the limited access to only one database. For a query, the requirements are based on joint database systems. But how do we query then?
-  Based on the CQRS, to query single databases per service model, the application should be divided into two parts: Command and Query. In this model, command handles all requests related to create, update and delete while queries are taken care of through a materialized view. These views are updated through a stream of events. These events, in turn, are created using an event sourcing pattern which marks any changes in the data. These changes eventually become events.
+  In a database-per-service model, the query cannot be implemented because of the limited access to only one database. For a query, 
+  the requirements are based on joint database systems. But how do we query then?
+  Based on the CQRS, to query single databases per service model, the application should be divided into two parts: Command and Query. 
+  In this model, command handles all requests related to create, update and delete while queries are taken care of through a 
+  materialized view. These views are updated through a stream of events. These events, in turn, are created using an event sourcing 
+  pattern which marks any changes in the data. These changes eventually become events.
 
 Microservice Design Patterns for Seamless Deployment
-  When we implement microservices, there are certain issues which come up during the call of these services. When you design microservice architecture, certain cross-cutting patterns can simplify the working.
+  When we implement microservices, there are certain issues which come up during the call of these services. When you design 
+  microservice architecture, certain cross-cutting patterns can simplify the working.
 
   a) Service Discovery
-    The use of containers leads to dynamic allocation of the IP address. This means the address can change at any moment. This causes a service break. In addition to this, the users have to bear the load of remembering every URL for the services, which become tightly coupled.
-    To solve this problem and give users the location of the request, a registry needs to be used. While initiation, a service instance can register in the registry and de-register while closing. This enables the user to find out the exact location which can be queried. In addition, a health check by the registry will ensure the availability of only working instances. This also improves the system performance.
+    The use of containers leads to dynamic allocation of the IP address. This means the address can change at any moment. This causes a 
+    service break. In addition to this, the users have to bear the load of remembering every URL for the services, which become tightly 
+    coupled.
+    To solve this problem and give users the location of the request, a registry needs to be used. While initiation, a service instance 
+    can register in the registry and de-register while closing. This enables the user to find out the exact location which can be 
+    queried. In addition, a health check by the registry will ensure the availability of only working instances. This also improves 
+    the system performance.
 
   b) Blue-Green Deployment
-    In a microservice design pattern, there are multiple microservices. Whenever updates are to be implemented or newer versions deployed, one has to shut down all the services. This leads to a huge downtime thus affecting productivity. To avoid this issue, when you design microservice architecture, you should use the blue-green deployment pattern.
-    In this pattern, two identical environments run parallelly, known as blue and green. At a time only one of them is live and processing all the production traffic. For example, blue is live and addressing all the traffic. In case of new deployment, one uploads the latest version onto the green environment, switches the router to the same and thus implement the update.
+    In a microservice design pattern, there are multiple microservices. Whenever updates are to be implemented or newer versions 
+    deployed, one has to shut down all the services. This leads to a huge downtime thus affecting productivity. To avoid this issue, 
+    when you design microservice architecture, you should use the blue-green deployment pattern.
+    In this pattern, two identical environments run parallelly, known as blue and green. At a time only one of them is live and 
+    processing all the production traffic. For example, blue is live and addressing all the traffic. In case of new deployment, one uploads the latest version onto the green environment, switches the router to the same and thus implement the update.
   
