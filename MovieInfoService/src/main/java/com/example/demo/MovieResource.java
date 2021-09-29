@@ -20,7 +20,7 @@ public class MovieResource {
 	@RequestMapping("/{movieId}")
 	public Movie getMovie(@PathVariable("movieId") String movieId) {
 		System.out.println("Request for movie id: " + movieId);
-		MovieSummary summary =  restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey, MovieSummary.class);
+		MovieDetails summary =  restTemplate.getForObject("https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey, MovieDetails.class);
 		System.out.println("Trying API :"+ "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey);
 		/*
 		 * Map<String,Movie> movies = new HashMap<>(); movies.put("0001", new
@@ -28,7 +28,8 @@ public class MovieResource {
 		 * "Lord of the Rings")); movies.put("0003", new Movie("0003","Avengers"));
 		 * return movies.get(movieId);
 		 */
-		
-		return new Movie(movieId,summary.getTitile(),summary.getOverview());
+		System.out.println("Movie summary " + movieId + " "+ summary.getOriginalTitle() + " "+ summary.getOverview() + " "+  summary.getPopularity());
+		assert summary != null;
+		return new Movie(movieId,summary.getOriginalTitle(),summary.getOverview(), summary.getPopularity());
 	}
 }
