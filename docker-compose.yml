@@ -1,0 +1,49 @@
+version: '3.0'
+
+services:
+  eureka-server:
+    build: EurekaServer
+    image: eurekaserver/eurekaserver-0.0.1
+    ports:
+      - "8761:8761"
+    container_name: EurekaServer  
+
+  gateway-server:
+    build: ZuulGateway
+    image: zuulgateway/zuulgateway-0.0.1
+    ports:
+      - "8088:8088"
+    container_name: ZuulGateway
+    
+  zipkin-server:
+    build: ZipkinServer
+    image: zipkinserver/zipkinserver-0.0.1
+    ports:
+      - "9411:9411"
+    container_name: ZipkinServer
+    
+  rating-data-service:
+    build: RatingDataService
+    image: ratingdataservice/ratingdataservice-0.0.1
+    ports:
+      - "8082:8082"
+    container_name: RatingDataService
+    
+  movie-info-service:
+    build: MovieInfoService
+    image: movieinfoservice/movieinfoservice-0.0.1
+    ports:
+      - "8081:8081"
+    container_name: MovieInfoService
+    
+  movie-catalog-service:
+    build: MovieCatalogService
+    image: moviecatalogservice/moviecatalogservice-0.0.1
+    ports:
+      - "8080:8080"
+    container_name: MovieCatalogService
+
+networks:
+  default:
+    external: true
+    name: dev-channel
