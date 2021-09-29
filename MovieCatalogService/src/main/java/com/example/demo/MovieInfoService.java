@@ -21,7 +21,9 @@ public class MovieInfoService {
 			})
 	public CatalogItem getCatalogItem(Rating rating) {
 		Movie movie = restTemplate.getForObject("http://MOVIE-INFO-SERVICE/movies/" + rating.getMovieId(), Movie.class);
-		return new CatalogItem(movie.getMovieId(), movie.getName(), rating.getRating());
+		System.out.println("Movie summary " + movie.getMovieId() + " "+ movie.getName() + " "+ movie.getOverview() + " "+  movie.getRating());
+		assert movie != null;
+		return new CatalogItem(movie.getMovieId(), movie.getName(), rating.getRating(),movie.getOverview(), movie.getRating() );
 	}
 	
 	public CatalogItem getFallbackCatalog(Rating rating) {
