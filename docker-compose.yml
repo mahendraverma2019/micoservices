@@ -3,47 +3,72 @@ version: '3.0'
 services:
   eureka-server:
     build: EurekaServer
-    image: eurekaserver/eurekaserver-0.0.1
+    image: eurekaserver/eurekaserve-0.0.1
     ports:
       - "8761:8761"
-    container_name: EurekaServer  
-
+    container_name: EurekaServer 
+    networks:
+          - resolute
+          
   gateway-server:
     build: ZuulGateway
     image: zuulgateway/zuulgateway-0.0.1
     ports:
       - "8088:8088"
     container_name: ZuulGateway
-    
+    networks:
+          - resolute
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka/
+      
   zipkin-server:
     build: ZipkinServer
     image: zipkinserver/zipkinserver-0.0.1
     ports:
       - "9411:9411"
     container_name: ZipkinServer
-    
+    networks:
+          - resolute
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka/
+      
   rating-data-service:
     build: RatingDataService
     image: ratingdataservice/ratingdataservice-0.0.1
     ports:
       - "8082:8082"
     container_name: RatingDataService
-    
+    networks:
+          - resolute
+    environment:
+      spring.zipkin.base-url: http://zipkin-server:9411/
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka/
+      
   movie-info-service:
     build: MovieInfoService
-    image: movieinfoservice/movieinfoservice-0.0.1
+    image: movieinfoservice/movieindoservice-0.0.1
     ports:
       - "8081:8081"
     container_name: MovieInfoService
-    
+    networks:
+          - resolute
+    environment:
+      spring.zipkin.base-url: http://zipkin-server:9411/
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka/
+      
   movie-catalog-service:
     build: MovieCatalogService
     image: moviecatalogservice/moviecatalogservice-0.0.1
     ports:
       - "8080:8080"
     container_name: MovieCatalogService
-
+    networks:
+          - resolute
+    environment:
+      spring.zipkin.base-url: http://zipkin-server:9411/
+      eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka/
+      
 networks:
-  default:
-    external: true
-    name: dev-channel
+  resolute:
+    external:
+      name: external-example
