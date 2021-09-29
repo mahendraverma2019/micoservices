@@ -23,5 +23,12 @@ public void setOverview(String overview) {
 	this.overview = overview;
 }
 
-
+	@Override
+	public String toString() {
+		return "MovieSummary{" +
+				"movieId='" + movieId + '\'' +
+				", titile='" + titile + '\'' +
+				", overview='" + overview + '\'' +
+				'}';
+	}
 }
